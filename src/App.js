@@ -5,9 +5,12 @@ import {
   Route,
 } from "react-router-dom";
 
+import { Topbar } from './components/index';
+
 export default function App() {
   return (
     <Router>
+        <Topbar />
         <Switch>
         <Route path="/">
             <Home />
