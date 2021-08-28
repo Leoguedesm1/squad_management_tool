@@ -5,20 +5,23 @@ import {
   Route,
 } from "react-router-dom";
 
-import { Topbar } from './components/index';
+import { Topbar, Bottombar } from './components/index';
 
 export default function App() {
   return (
     <Router>
         <Topbar />
+        
         <Switch>
-        <Route path="/">
+          <Route path="/">
             <Home />
           </Route>
           <Route path="/new_team">
             <Users />
           </Route>
         </Switch>
+
+        <Bottombar />
     </Router>
   );
 }
