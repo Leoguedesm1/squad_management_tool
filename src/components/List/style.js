@@ -1,5 +1,5 @@
 import { styled, makeStyles } from '@material-ui/core/styles';
-import { List, ListItem } from '@material-ui/core';
+import { List, ListItem, Typography } from '@material-ui/core';
 
 const StyledList = styled(List)({
     borderRadius: 10,
@@ -16,8 +16,13 @@ const StyledListItem = styled(ListItem)({
     minWidth: '10%',
 });
 
+const StyledTypography = styled(Typography)({
+    color: 'black',
+    fontWeight: 'bold'
+})
 
 export { 
     StyledList,
     StyledListItem,
+    StyledTypography
 }

@@ -3,7 +3,7 @@ import { Grid, Container, Typography, IconButton } from '@material-ui/core';
 import { Card, Table, List, } from '../../components/index';
 import { Add } from '@material-ui/icons';
 
-import { StyledIcon, StyledIconButton } from './style';
+import { StyledIcon, StyledIconButton, StyledTypography } from './style';
 
 export default () => {
 
@@ -61,7 +61,7 @@ export default () => {
                                     <Grid item xs={6}>
                                         <Grid container direction="column" alignItems="flex-start" spacing={1}>
                                             <Grid item>
-                                                <Typography>Highest avg age</Typography>
+                                                <StyledTypography>Highest avg age</StyledTypography>
                                             </Grid>
                                             <Grid item>
                                                 <List 
@@ -90,7 +90,7 @@ export default () => {
                                     <Grid item xs={6}>
                                         <Grid container direction="column" alignItems="flex-start" spacing={1}>
                                             <Grid item>
-                                                <Typography>Lowest avg age</Typography>
+                                                <StyledTypography>Lowest avg age</StyledTypography>
                                             </Grid>
                                             <Grid item>
                                                 <List 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { List, ListItem, ListItemText, Grid, Typography } from '@material-ui/core';
-import { StyledList, StyledListItem } from './style';
+import { StyledList, StyledListItem, StyledTypography } from './style';
 
 export default ({ items }) => {
 
@@ -15,7 +15,7 @@ export default ({ items }) => {
                                     <Typography variant="body2">{item.name}</Typography>
                                 </Grid>
                                 <Grid item>
-                                    <Typography variant="body2">{item.value}</Typography>
+                                    <StyledTypography variant="body2">{item.value}</StyledTypography>
                                 </Grid>
                             </Grid>
                         </StyledListItem>

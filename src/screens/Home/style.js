@@ -1,4 +1,5 @@
 import { styled, makeStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core'
 
 const StyledTableRow = makeStyles({
     hover: {
@@ -23,10 +24,16 @@ const StyledIconButton = makeStyles({
         padding: '5px 5px',
         boxShadow: '0px 10px 10px -2px purple'
     }
+});
+
+const StyledTypography = styled(Typography)({
+    color: 'black',
+    fontWeight: 'bold'
 })
 
 export { 
     StyledTableRow,
     StyledIcon,
     StyledIconButton,
+    StyledTypography,
 }
