@@ -22,7 +22,6 @@ const StyledIconButton = makeStyles({
         borderRadius: 5,
         padding: '5px 5px',
         boxShadow: '0px 10px 10px -2px purple'
-
     }
 })
 

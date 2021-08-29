@@ -3,6 +3,7 @@ import Bottombar from './Bottombar/Bottombar';
 import BackgroundContainer from './BackgroundContainer/BackgroundContainer';
 import Card from './Card/Card';
 import Table from './Table/Table';
+import List from './List/List';
 
 export {
     Topbar,
@@ -10,4 +11,5 @@ export {
     BackgroundContainer,
     Card,
     Table,
+    List,
 };
