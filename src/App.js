@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 
 import { Topbar, Bottombar, BackgroundContainer } from './components/index';
+import { Home, } from './screens/index';
 
 export default function App() {
   return (
@@ -28,9 +29,6 @@ export default function App() {
   );
 }
 
-function Home() {
-  return <h2>Home</h2>;
-}
 
 function Users() {
   return <h2>New Team</h2>;

@@ -6,7 +6,6 @@ const Container = styled(Grid)({
   padding: '10px 30px',
   color: 'black',
   bottom: 0,
-  position: 'fixed'
 });
 
 export { 
