@@ -1,3 +1,23 @@
+# Sobre o Projeto
+
+Para auxiliar na interface foi utilizada a lib [Material UI](https://material-ui.com/pt/) e a lib [React-tag-input](https://betterstack.dev/projects/react-tag-input/).\
+Foram utilizados tanto quanto styled components, quanto sobrescrita das classes dos componentes da material ui.\
+Também foi utilizada ContextAPI. A ideia era usar dois contextos diferentes, Teams: para salvar todos os dados de todos os times, e Team: para facilitar na edição de um time.
+
+## Tarefas Completas
+
+Interface da home está completa apesar de uma parte estar mockada.\
+Lista de Squads está com ContextAPI.\
+Botão de excluir da lista.\
+Botão de ordenar da lista.\
+Página de Novo Time só possui a primeira parte do formulário.\
+É possível salvar Novos Times.
+
+## Detalhes
+
+Atualmente estou empregado e fazendo hora extra, o que fiz foi no final de semana, não rolou tudo.\
+Tentei seguir o método do git-flow, mas no final estava correndo um pouco e fiz um commit enorme.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
