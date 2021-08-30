@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     TableContainer,
     Table,
     TableHead,
     TableRow,
-    TableCell,
     TableBody,
     Tooltip,
     Grid,
@@ -16,7 +15,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import EditIcon from '@material-ui/icons/Edit';
 import UnfoldMoreIcon from '@material-ui/icons/UnfoldMore';
 
-import { StyledTableRow, StyledTypography, StyledIcon, StyledTooltip } from './style';
+import { StyledTableRow, StyledTypography, StyledIcon, StyledTooltip, StyledTableCell } from './style';
 
 export default ({ items }, ref) => {
 
@@ -27,11 +26,10 @@ export default ({ items }, ref) => {
     return (
         <TableContainer>
             <Table>
-
                 <TableHead>
                     <TableRow>
-                        <TableCell align="left">
-                            <Grid container direction="row" alignItems="center" spacing={10} justifyContent="space-between">
+                        <StyledTableCell align="left">
+                            <Grid container direction="row" alignItems="center" spacing={2}>
                                 <Grid item>
                                     <StyledTypography variant="body2">Name</StyledTypography>
                                 </Grid>
@@ -42,8 +40,8 @@ export default ({ items }, ref) => {
                                     </IconButton>
                                 </Grid>
                             </Grid>
-                        </TableCell>
-                        <TableCell align="left">
+                        </StyledTableCell>
+                        <StyledTableCell align="left">
                             <Grid container direction="row" alignItems="center" spacing={10} justifyContent="space-between">
                                 <Grid item>
                                     <StyledTypography variant="body2">Description</StyledTypography>
@@ -55,7 +53,7 @@ export default ({ items }, ref) => {
                                     </IconButton>
                                 </Grid>
                             </Grid>
-                        </TableCell>
+                        </StyledTableCell>
                     </TableRow>
                 </TableHead>
 
@@ -66,11 +64,11 @@ export default ({ items }, ref) => {
                             hover
                             classes={{ hover: tableRowClasses.hover }}
                         >
-                            <TableCell align="left">
+                            <StyledTableCell align="left">
                                 <StyledTypography variant="body2">{item.name}</StyledTypography>
-                            </TableCell>
+                            </StyledTableCell>
 
-                            <TableCell align="left">
+                            <StyledTableCell align="left">
                                 <Grid container direction="row" justifyContent="space-between" alignItems="center" spacing={10}>
                                     <Grid item>
                                         <StyledTypography variant="body2">{item.description}</StyledTypography>
@@ -105,7 +103,7 @@ export default ({ items }, ref) => {
                                     </Grid>
 
                                 </Grid>
-                            </TableCell>
+                            </StyledTableCell>
                         </TableRow>
                     ))}
                 </TableBody>

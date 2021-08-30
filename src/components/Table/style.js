@@ -1,5 +1,5 @@
 import { styled, makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Typography, TableCell } from '@material-ui/core';
 
 const StyledTableRow = makeStyles({
     hover: {
@@ -22,11 +22,16 @@ const StyledTooltip = makeStyles({
     tooltip: {
         backgroundColor: '#2a2a2a',
     }
-})
+});
 
 const StyledTypography = styled(Typography)({
     color: 'black',
     fontWeight: 'bold'
+})
+
+const StyledTableCell = styled(TableCell)({
+    paddingRight: 4,
+    paddingLeft: 5
 })
 
 export { 
@@ -34,4 +39,5 @@ export {
     StyledTypography,
     StyledIcon,
     StyledTooltip,
+    StyledTableCell,
 }
