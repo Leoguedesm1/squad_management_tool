@@ -4,6 +4,7 @@ import BackgroundContainer from './BackgroundContainer/BackgroundContainer';
 import Card from './Card/Card';
 import Table from './Table/Table';
 import List from './List/List';
+import SoccerField from './SoccerField/SoccerField';
 
 export {
     Topbar,
@@ -12,4 +13,5 @@ export {
     Card,
     Table,
     List,
+    SoccerField,
 };

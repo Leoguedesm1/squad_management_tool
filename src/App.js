@@ -12,7 +12,6 @@ export default function App() {
   return (
     <Router>
         <Topbar />
-        
         <BackgroundContainer>
           <Switch>
             <Route path="/">
