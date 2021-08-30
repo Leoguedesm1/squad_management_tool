@@ -17,7 +17,7 @@ import UnfoldMoreIcon from '@material-ui/icons/UnfoldMore';
 
 import { StyledTableRow, StyledTypography, StyledIcon, StyledTooltip, StyledTableCell } from './style';
 
-export default ({ items }, ref) => {
+export default ({ items, onDelete, onOrder }) => {
 
     const tableRowClasses = StyledTableRow();
     const iconClasses = StyledIcon();
@@ -27,34 +27,37 @@ export default ({ items }, ref) => {
         <TableContainer>
             <Table>
                 <TableHead>
-                    <TableRow>
-                        <StyledTableCell align="left">
-                            <Grid container direction="row" alignItems="center" spacing={2}>
-                                <Grid item>
-                                    <StyledTypography variant="body2">Name</StyledTypography>
-                                </Grid>
+                    {items.length > 0
+                        ? <TableRow>
+                            <StyledTableCell align="left">
+                                <Grid container direction="row" alignItems="center" spacing={2}>
+                                    <Grid item>
+                                        <StyledTypography variant="body2">Name</StyledTypography>
+                                    </Grid>
 
-                                <Grid item>
-                                    <IconButton size="small">
-                                        <UnfoldMoreIcon color="primary" classes={iconClasses} />
-                                    </IconButton>
+                                    <Grid item>
+                                        <IconButton size="small" onClick={() => onOrder('name')}>
+                                            <UnfoldMoreIcon color="primary" classes={iconClasses} />
+                                        </IconButton>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </StyledTableCell>
-                        <StyledTableCell align="left">
-                            <Grid container direction="row" alignItems="center" spacing={10} justifyContent="space-between">
-                                <Grid item>
-                                    <StyledTypography variant="body2">Description</StyledTypography>
-                                </Grid>
+                            </StyledTableCell>
+                            <StyledTableCell align="left">
+                                <Grid container direction="row" alignItems="center" spacing={10} justifyContent="space-between">
+                                    <Grid item>
+                                        <StyledTypography variant="body2">Description</StyledTypography>
+                                    </Grid>
 
-                                <Grid item>
-                                    <IconButton size="small">
-                                        <UnfoldMoreIcon color="primary" classes={iconClasses} />
-                                    </IconButton>
+                                    <Grid item>
+                                        <IconButton size="small" onClick={()=> onOrder('description')}>
+                                            <UnfoldMoreIcon color="primary" classes={iconClasses} />
+                                        </IconButton>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </StyledTableCell>
-                    </TableRow>
+                            </StyledTableCell>
+                        </TableRow>
+                        : <StyledTypography variant="body2">Não existe times cadastrados. :(</StyledTypography>
+                    }
                 </TableHead>
 
                 <TableBody>
@@ -78,7 +81,7 @@ export default ({ items }, ref) => {
                                         <Grid container direction="row" spacing={1}>
                                             <Grid item>
                                                 <Tooltip arrow title="Delete" classes={tooltipClasses} placement="top">
-                                                    <IconButton size="small">
+                                                    <IconButton size="small" onClick={() => onDelete(item)}>
                                                         <DeleteIcon color="primary" classes={iconClasses} />
                                                     </IconButton>
                                                 </Tooltip>

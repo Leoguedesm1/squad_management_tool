@@ -6,25 +6,25 @@ import {
 } from "react-router-dom";
 
 import { Topbar, Bottombar, BackgroundContainer } from './components/index';
-import { Home, } from './screens/index';
+import { Home, NewTeam } from './screens/index';
+
+import AppProvider from './context';
 
 export default function App() {
   return (
     <Router>
-        <Topbar />
-        
-        <BackgroundContainer>
-          <Switch>
-            <Route path="/">
-              <Home />
-            </Route>
-            <Route path="/new_team">
-              <Users />
-            </Route>
-          </Switch>
-        </BackgroundContainer>
+        <AppProvider>
+          <Topbar />
+          
+          <BackgroundContainer>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/new_team" component={NewTeam} />
+            </Switch>
+          </BackgroundContainer>
 
-        <Bottombar />
+          <Bottombar />
+        </AppProvider>
     </Router>
   );
 }

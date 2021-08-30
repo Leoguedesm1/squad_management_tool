@@ -5,6 +5,9 @@ import { Add } from '@material-ui/icons';
 
 import { StyledIcon, StyledIconButton, StyledTypography, PickedAvatar, NonPickedAvatar, StyledTypographyWhite, StyledDivider } from './style';
 
+import { useHistory } from 'react-router-dom';
+import { TeamsContext } from '../../context/Teams';
+
 export default () => {
 
     const iconClasses = StyledIcon();
@@ -12,6 +15,39 @@ export default () => {
     const avatarPickedClasses = PickedAvatar();
     const avatarNonPickedClasses = NonPickedAvatar();
     const dividerClasses = StyledDivider();
+
+    const history = useHistory();
+
+    const { teams, setTeams } = React.useContext(TeamsContext);
+
+    function onDelete(team) {
+        teams.map((t, index) => {
+            if (t === team) {
+                let teamsAux = [ ...teams];
+                teamsAux.splice(index, 1);
+                setTeams(teamsAux);
+            }
+        })
+    }
+
+    function onOrder(attribute) {
+
+        function compare(a, b) {
+            if (a[attribute] < b[attribute]) {
+                return -1;
+            }
+
+            if (a[attribute] > b[attribute]) {
+                return 1;
+            }
+
+            return 0;
+        }
+
+        let teamsAux = [...teams];
+        teamsAux.sort(compare);
+        setTeams(teamsAux);
+    }
 
     return (
         <Container disableGutters={true} fixed={true}>
@@ -22,34 +58,21 @@ export default () => {
                     <Card 
                         title="My teams"
                         action={
-                            <IconButton size='medium' color="primary" classes={iconButtonClasses}>
+                            <IconButton 
+                                size='medium' 
+                                color="primary" 
+                                classes={iconButtonClasses}
+                                onClick={() => history.push('/new_team')}
+                            >
                                 <Add color="primary" classes={iconClasses} />
                             </IconButton>
                         }
                     >
                         
                         <Table 
-                            items={[
-                                { 
-                                    name: 'Barcelona',
-                                    description: 'Barcelona Squad',
-                                }, {
-                                    name: 'Real Madrid',
-                                    description: 'Real Madrid Squad',
-                                }, {
-                                    name: 'Milan',
-                                    description: 'Milan Squad',
-                                }, {
-                                    name: 'Liverpool',
-                                    description: 'Liverpool Squad',
-                                }, {
-                                    name: 'Bayern Munich',
-                                    description: 'Bayer Munich Squad',
-                                }, {
-                                    name: 'Lazio',
-                                    description: 'Lazio Squad',
-                                }
-                            ]}
+                            items={teams} 
+                            onDelete={onDelete}
+                            onOrder={onOrder}
                         />
 
                     </Card>
