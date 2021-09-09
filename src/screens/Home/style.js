@@ -44,7 +44,6 @@ const NonPickedAvatar = makeStyles({
     },
 });
 
-
 const StyledTypography = styled(Typography)({
     color: 'black',
     fontWeight: 'bold'

@@ -3,8 +3,8 @@ import { styled } from '@material-ui/core/styles';
 const Pitch = styled('div')({
     borderRadius: 10,
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    width: '100%',
-    height: '380px',
+    width: '400px',
+    height: '500px',
     position: 'relative',
 })
 
@@ -21,16 +21,16 @@ const CenterCircle = styled('div')({
 
 const CenterLine = styled('div')({
     position: 'absolute',
-    width: '50%',
-    height: '380px',
-    borderRight: '1px solid white'
+    width: '400px',
+    height: '250px',
+    borderBottom: '1px solid white'
 });
 
 const Content = styled('div')({
-    width: '100%',
-    height: '380px',
+    width: '400px',
+    height: '500px',
     position: 'absolute',
-    padding: '100px 0px'
+    padding: '20px 0'
 })
 
 export { 

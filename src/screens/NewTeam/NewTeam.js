@@ -10,16 +10,21 @@ import {
     FormControlLabel, 
     Radio,
     Button,
+    Select,
+    MenuItem,
+    Avatar,
 } from '@material-ui/core';
-import { Card } from '../../components/index';
+import { Card, VerticalSoccerField } from '../../components/index';
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
 
-import { StyledTextField, StyledButton } from './style';
+import { StyledTextField, StyledButton, Jogador } from './style';
 
 import { TeamContext } from '../../context/Team';
 import { TeamsContext } from '../../context/Teams';
 import { useHistory } from 'react-router-dom';
+
+import AddIcon from '@material-ui/icons/Add';
 
 export default () => {
 
@@ -36,11 +41,84 @@ export default () => {
 
     const textFieldClasses = StyledTextField();
     const buttonClasses = StyledButton();
+    const jogadorClasses = Jogador();
 
     const history = useHistory();
 
     const { team, setTeam } = React.useContext(TeamContext);
     const { teams, setTeams } = React.useContext(TeamsContext);
+
+    const formations = [
+        {
+            value: 1,
+            label: "4-5-1",
+            goal: 1,
+            zag: 4,
+            mei: {
+                firstLine: 2,
+                secondLine: 3
+            },
+            ata: {
+                firstLine: 0,
+                secondLine: 1
+            }
+        }, {
+            value: 2,
+            label: "3-4-3",
+            goal: 1,
+            zag: 3,
+            mei: {
+                firstLine: 2,
+                secondLine: 2,
+            },
+            ata: {
+                firstLine: 2,
+                secondLine: 1,
+            }
+        }, {
+            value: 3,
+            label: "4-4-2",
+            goal: 1,
+            zag: 4,
+            mei: {
+                firstLine: 3,
+                secondLine: 1,
+            },
+            ata: {
+                firstLine: 2,
+                secondLine: 0,
+            }
+        }, {
+            value: 4,
+            label: "4-3-3",
+            goal: 1,
+            zag: 4,
+            mei: {
+                firstLine: 3,
+                secondLine: 0,
+            },
+            ata: {
+                firstLine: 2,
+                secondLine: 1
+            }
+        }, {
+            value: 5,
+            label: "3-5-2",
+            goal: 1,
+            zag: 3,
+            mei: {
+                firstLine: 3,
+                secondLine: 2,
+            },
+            ata: {
+                firstLine: 0,
+                secondLine: 2
+            }
+        }
+    ]
+
+    const [formationValue, setFormationValue] = React.useState(1);
+    const [formation, setFormation] = React.useState(formations[0]);
 
     function handleSave() {
 
@@ -70,7 +148,9 @@ export default () => {
             description,
             website,
             type,
-            tags
+            tags,
+            formationValue,
+            formation
         };
 
         let teamsAux = [ ...teams, teamAux];
@@ -78,6 +158,87 @@ export default () => {
         setTeams(teamsAux);
         history.push('/');
     }
+
+    let goalUI = Array.from(Array(formation.goal), (e, i) => {
+        return (
+            <Grid item>
+                <Avatar className={jogadorClasses.large}>
+                    <AddIcon />
+                </Avatar>
+            </Grid>
+        )
+    })
+    
+    let zagUI = Array.from(Array(formation.zag), (e, i) => {
+        return (
+            <Grid item>
+                <Avatar className={jogadorClasses.large}>
+                    <AddIcon />
+                </Avatar>
+            </Grid>
+        )
+    })
+
+    let meiUI = <Grid container direction="column" spacing={2} justifyContent="center" alignContent="center" alignItems="center">
+        <Grid item>
+            <Grid container direction="row" spacing={10}>
+                {Array.from(Array(formation.mei.secondLine), (e, i) => {
+                    return (
+                        <Grid item>
+                            <Avatar className={jogadorClasses.large}>
+                                <AddIcon />
+                            </Avatar>
+                        </Grid>
+                    )
+                })}
+            </Grid>
+        </Grid>
+
+        <Grid item>
+            <Grid container direction="row" spacing={10}>
+                {Array.from(Array(formation.mei.firstLine), (e, i) => {
+                    return (
+                        <Grid item>
+                            <Avatar className={jogadorClasses.large}>
+                            <   AddIcon />
+                            </Avatar>
+                        </Grid>
+                    )
+                })}
+            </Grid>
+        </Grid>
+    </Grid>
+
+    let ataUI = <Grid container direction="column" spacing={2} justifyContent="center" alignContent="center" alignItems="center">
+        <Grid item>
+            <Grid container direction="row" spacing={10}>
+                {Array.from(Array(formation.ata.secondLine), (e, i) => {
+                    return (
+                        <Grid item>
+                            <Avatar className={jogadorClasses.large}>
+                                <AddIcon />
+                            </Avatar>
+                        </Grid>
+                    )
+                })}
+            </Grid>
+        </Grid>
+
+        <Grid item>
+            <Grid container direction="row" spacing={10}>
+                {Array.from(Array(formation.ata.firstLine), (e, i) => {
+                    return (
+                        <Grid item>
+                            <Avatar className={jogadorClasses.large}>
+                                <AddIcon />
+                            </Avatar>
+                        </Grid>
+                    )
+                })}
+            </Grid>
+        </Grid>
+    </Grid>
+
 
     return (
         <Container disableGutters={true} fixed={true}>
@@ -192,6 +353,72 @@ export default () => {
 
                             </Grid>
 
+                        </Grid>
+
+                        <Grid item>
+                            <Typography>SQUAD FORMATION</Typography>
+                        </Grid>
+
+                        <Grid item>
+                            <Grid container direction="row" justifyContent="space-between">
+                                <Grid item xs={12}>
+                                    <Grid container direction="column" spacing={4}>
+                                        <Grid item>
+                                            <FormControl>
+                                                <Select
+                                                    value={formationValue}
+                                                    onChange={event => {
+                                                        setFormationValue(event.target.value)
+                                                        setFormation(formations[event.target.value-1])
+                                                    }}
+                                                >
+                                                    {formations.map((f, index) => {
+                                                        return(
+                                                            <MenuItem value={f.value}>{f.label}</MenuItem>
+                                                        )
+                                                        
+                                                    })}
+                                                </Select>
+                                            </FormControl>
+                                        </Grid>
+
+                                        <Grid item>
+                                            <VerticalSoccerField>
+                                                <Grid container spacing={6} style={{ alignSelf: 'center' }} direction="column" alignItems="center" justifyContent="center" alignContent="center">
+                                                    {/*ATACANTES*/}
+                                                    <Grid item>
+                                                        {ataUI}
+                                                    </Grid>
+
+                                                    {/*MEIO*/}
+                                                    <Grid item>
+                                                        {meiUI}
+                                                    </Grid>
+
+                                                    {/*ZAGUEIRO*/}
+                                                    <Grid item>
+                                                        <Grid container spacing={5}>
+                                                            {zagUI}
+                                                        </Grid>
+                                                    </Grid>
+
+                                                    {/*GOL*/}
+                                                    <Grid item>
+                                                        <Grid container>
+                                                            {goalUI}
+                                                        </Grid>
+                                                    </Grid>
+                                                </Grid>
+                                            </VerticalSoccerField>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+
+                                <Grid item>
+
+                                </Grid>
+                                
+                            </Grid>
                         </Grid>
 
                         <Grid item>

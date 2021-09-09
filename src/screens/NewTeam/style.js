@@ -15,8 +15,15 @@ const StyledTextField= makeStyles({
     }
 });
 
+const Jogador = makeStyles({
+    large: {
+        width: '48px',
+        height: '48px'
+    },
+});
 
 export { 
     StyledTextField,
     StyledButton,
+    Jogador
 }
