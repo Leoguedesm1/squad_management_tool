@@ -5,6 +5,7 @@ import Card from './Card/Card';
 import Table from './Table/Table';
 import List from './List/List';
 import SoccerField from './SoccerField/SoccerField';
+import VerticalSoccerField from './VerticalSoccerField/VerticalSoccerField';
 
 export {
     Topbar,
@@ -14,4 +15,5 @@ export {
     Table,
     List,
     SoccerField,
+    VerticalSoccerField,
 };
